@@ -127,3 +127,19 @@
     filter: invert(1);
   }
 }
+#home {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#home input{
+  display: none;
+}
+#home label{
+  width: 300px;
+  height: 50px;
+  text-align: center;
+  background-color: #0070f3;
+}
