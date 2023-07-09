@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { postPdfFile } from "../../utils/api";
+import styled from "styled-components";
+
+
 
 const HomeContent = () => {
   const [marks, setMarks] = useState(undefined);
@@ -14,14 +17,15 @@ const HomeContent = () => {
   };
   console.log(marks);
   return (
-    <div className="home" id="home">
+    <div className="home hover" id="home">
       <input
+      className=""
         type="file"
         name=""
         id="file"
         onChange={(e) => handleUpload(e.target.files[0])}
       />
-      <label htmlFor="file">upload file</label>
+      <label htmlFor="file">upload</label>
     </div>
   );
 };

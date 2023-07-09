@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background: #160E2A;
 }
 
 a {
@@ -23,7 +24,7 @@ a {
   }
   body {
     color: #222233;
-    background: white;
+    background: #160E2A;
   }
 }
 .title{
@@ -85,8 +86,7 @@ a {
   background-color: #222233;
 }
 #home {
-  width: 100%;
-  height: 100vh;
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,16 +95,27 @@ a {
   display: none;
 }
 #home label{
-  width: 300px;
+  position: relative;
+  z-index: 40;
+
+  width: 130px;
   text-align: center;
-  background-color: black;
-  font-size: 25px;
+  background: url("/images/navbtn.svg") no-repeat center;
+background-size:179px 42px ;
+  font-size: 14px;
+  transform: scale(1.6);
   padding: 20px 0;
   border-radius: 10px;
-  font-weight: bold;
+  font-family: 'Righteous';
+
   color: white;
   cursor: pointer;
 
+}
+#home label:hover{
+  transform: scale(1.7);
+  transition: 0.2s;
+  
 }
 #marks{
   padding: 100px;

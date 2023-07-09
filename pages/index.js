@@ -2,9 +2,46 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import HomeContent from "../components/Home/HomeContent";
+import Banner from "../components/Home/banner";
+import styled from "styled-components";
+import Map from "../components/Home/map";
+
+const MainCont = styled.div`
+position: relative;
+display: flex;
+flex-direction: column;
+justify-content: center;
+width: 100vw;
+.home-upload{
+ margin-top: 292px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+
+}
+.banner-div{
+  margin-left: -30px;
+}
+.map-div{
+  margin-top: 800px;
+}
+
+.up-txt{
+  font-family: 'Righteous';
+  color: #FFF;
+font-size: 30px;
+margin-bottom: 80px;
+font-style: normal;
+font-weight: 400;
+line-height: normal; 
+
+}
+`
+
 
 export default function Home() {
   return (
+    <MainCont>
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -14,7 +51,17 @@ export default function Home() {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Righteous&display=swap" rel="stylesheet"/>
       </Head>
+      <div className="banner-div">
+      <Banner/>
+      </div>
+      <div className="map-div">
+        <Map/>
+      </div>
+      <div className="home-upload">
+        <div className="up-txt">Upload your Score Card</div>
       <HomeContent />
+      </div>
     </div>
+    </MainCont>
   );
 }
