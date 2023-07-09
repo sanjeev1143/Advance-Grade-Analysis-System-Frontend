@@ -5,6 +5,7 @@ import HomeContent from "../components/Home/HomeContent";
 import Banner from "../components/Home/banner";
 import styled from "styled-components";
 import Map from "../components/Home/map";
+import RoundBall from "../components/animation/roundball";
 
 const MainCont = styled.div`
 position: relative;
@@ -13,7 +14,7 @@ flex-direction: column;
 justify-content: center;
 width: 100vw;
 .home-upload{
- margin-top: 292px;
+ margin-top: 792px;
  display: flex;
  flex-direction: column;
  align-items: center;
@@ -23,7 +24,7 @@ width: 100vw;
   margin-left: -30px;
 }
 .map-div{
-  margin-top: 800px;
+  margin-top: 300px;
 }
 
 .up-txt{
@@ -35,6 +36,46 @@ font-style: normal;
 font-weight: 400;
 line-height: normal; 
 
+}
+.bg1{
+  position: relative;
+  z-index: 2;
+  margin-top: -670px;
+  width: 433.788px;
+height: 636.579px;
+transform: rotate(76.66deg);
+flex-shrink: 0;
+border-radius: 636.579px;
+background: linear-gradient(180deg, #FB03F5 0%, #AA9CFF 100%);
+filter: blur(94.70753479003906px);
+}
+.bg2{
+  position: relative;
+  margin-top: -750px;
+  margin-left: -200px;
+  z-index: 2;
+  width: 697.406px;
+height: 818.518px;
+opacity: 0.2;
+transform: rotate(54.351deg);
+flex-shrink: 0;
+border-radius: 818.518px;
+background: linear-gradient(264deg, #7000FF 0%, #06FFF0 100%);
+filter: blur(133.97015380859375px);
+}
+.bg3{
+  position: relative;
+  margin-top: -200px;
+  margin-left: -100px;
+  z-index: 2;
+opacity: 0.5;
+  width: 346.55px;
+height: 346.55px;
+transform: rotate(-22.538deg);
+flex-shrink: 0;
+border-radius: 346.55px;
+background: linear-gradient(180deg, #2603FB 0%, #DC06FF 100%);
+filter: blur(176.73252868652344px);
 }
 `
 
@@ -52,15 +93,24 @@ export default function Home() {
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Righteous&display=swap" rel="stylesheet"/>
       </Head>
       <div className="banner-div">
+     
+  
+     
       <Banner/>
+      <div className="bg1"></div>
+      <div className="bg2"></div>
+      <div className="bg3"></div>
+
       </div>
       <div className="map-div">
         <Map/>
+        
       </div>
       <div className="home-upload">
         <div className="up-txt">Upload your Score Card</div>
       <HomeContent />
       </div>
+    
     </div>
     </MainCont>
   );

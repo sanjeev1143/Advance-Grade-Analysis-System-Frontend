@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import StudentCard from './studentCard'
-
+import RoundBall from '../animation/roundball'
+import { useInView } from "react-intersection-observer";
+import {motion} from 'framer-motion';
 
 const MainCont = styled.div`
 .map{
@@ -109,14 +111,31 @@ margin-left: 110px;
 }
 
 .it6{
-    margin-top: -65px;
-margin-left: 49px;
+    margin-top: -356px;
+margin-left: 885px;
 }
 
-
+.map-ref{
+    margin-top: -600px;
+    width: 400px;
+}
 `
 
 function Map() {
+    const [animate,setAnimate] = useState(false);
+    const [ref, inView] = useInView();
+  
+    useEffect(() => {
+      if (inView) {
+        setAnimate(true);
+      }
+      else{
+        setAnimate(false);
+      }
+    
+     
+    }, [ inView]);
+  
   return (
     <MainCont>
     <div className='map'>
@@ -124,6 +143,10 @@ function Map() {
       <div className=''><Image src={"/images/map.svg"} alt="Image" height={583} width={1243} className='map-bg'/></div>
       <div className='btn'>View All Students</div>
     </div>
+    <motion.div
+             transition={{ duration: 1 }}  
+             animate={{opacity: animate?1:0,transform: animate?'translateY(0px)':'translateY(-100px)'}}
+        >
     <div className='items'>
         <div className='item it1'>
         <StudentCard rank={"1"} score={"997"} name={"Pabitra"}/>
@@ -140,10 +163,14 @@ function Map() {
         <div className='item it5'>
         <StudentCard rank={"5"} score={"553"} name={"Shreya"}/>
         </div>
+        <RoundBall type={2}/>
         <div className='item it6'>
         <StudentCard rank={"6"} score={"473"} name={"Hari"}/>
         </div>
     </div>
+    </motion.div>
+    <div ref={ref} className="map-ref"></div>
+
     </MainCont>
   )
 }

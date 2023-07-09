@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -87,13 +88,16 @@ text-transform: uppercase;
 
 
 function Navbar() {
+
+  const router = useRouter();
+
   return (
     <MainCont>
     <div className='navbar'>
       <div className='logo'></div>
       <div className='links'>
-      <div className='link'>View Grades</div>
-      <div className='link'>analyse Grades</div>
+      <div className='link' onClick={()=>{router.push('/marks')}}>View Grades</div>
+      <div className='link' onClick={()=>{router.push('/prediction')}} >analyse Grades</div>
       <div className='link'>Predict Grades</div>
       </div>
       <div className='buttons'>

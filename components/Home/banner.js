@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
+import RoundBall from '../animation/roundball'
+import { motion } from 'framer-motion'
+import { useInView } from "react-intersection-observer";
+
 
 
 const MainCont = styled.div`
@@ -50,23 +54,63 @@ line-height: 160%;
     z-index: -1;
     margin-top: -125px;
 }
+.center-ref30{
+  height: 300px;
+ 
+}
 
+
+.banner-left{
+  position: relative;
+  z-index: 10;
+}
 `
 
 
 function Banner() {
+
+  
+  const [animate,setAnimate] = useState(false);
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      setAnimate(true);
+    }
+    else{
+      setAnimate(false);
+    }
+  
+   
+  }, [ inView]);
+  
   return (
     <MainCont>
+      
     <div className='banner'>
+    <motion.div 
+          transition={{ duration: 1 }}  
+          animate={{opacity: animate?1:0,transform: animate?'translateX(0px)':'translateX(-300px)'}}
+        
+        >
       <div className='banner-left' >
       <div className='head-txt'>Keep Calm & <br/> Enhance Your Grades.</div>
-      
+      <RoundBall type={1} time={3400}/><RoundBall type={2}/><RoundBall type={2}/>
       <div className='desc-txt'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam orci lacus, tempor nec accumsan ac, luctus ut sem. Mauris pretium lacus eget vulputate rhoncus. Vivamus egestas, orci eu lobortis pulvinar.</div>
       </div>
+      </motion.div>
+    <motion.div 
+          transition={{ duration: 1 }}  
+          animate={{opacity: animate?1:0,transform: animate?'translateX(0px)':'translateX(300px)'}}
+        
+        >
+          
       <div className='banner-right'>
         <Image src = {"/images/hand.svg"} className='hand-img' alt="Image" width={555} height={878} />
       </div>
+      </motion.div>
     </div>
+    <div ref={ref} className="center-ref30"></div>
     </MainCont>
   )
 }
